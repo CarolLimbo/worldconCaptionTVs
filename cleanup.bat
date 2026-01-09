@@ -1,0 +1,1 @@
+type cleanup.sh | adb shell

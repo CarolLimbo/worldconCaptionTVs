@@ -1,0 +1,1 @@
+adb shell am start com.google.audio.hearing.visualization.accessibility.scribe/.MainActivity
