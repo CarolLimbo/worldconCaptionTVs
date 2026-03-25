@@ -1,0 +1,86 @@
+Hardware:
+Kickpi KP1 https://www.amazon.com/KICKPI-KP1-Android-TV-Chromecast/dp/B0DP63RJK9
+Audio interface such as https://www.amazon.com/dp/B0CHX3QPMT
+A TV or other output device such as a projector
+
+You can do the scrcpy steps with a mouse instead of via scrcpy
+
+NOTE that this particular hardware proved reliable in testing with two big caveats:
+1. If it doesn't receive transcribable sound for a couple of hours, it will go into a zombie state where it shows that it's receiving audio and still flags the 'clapping' 'laughter' etc indicators but no longer puts transcribed text to the screen. Use the Home button, wait 30s, then launch transcription again to fix this, or restart and start again if it gets really grouchy.
+2. For some reason when the USB audio interface is connected you cannot use the other USB port. The USB port closer to the front proved more reliable overall in extended testing.
+
+
+Software prerequisites: the set of files, adb, scrcpy installed
+
+On the Android TV device
+
+Set up with wireless network
+Sign in with temporary caption account (we use caption@seattlein2025.org)
+Accept terms of service
+Turn off Use Location and Help Improve Android
+Answer the Assistant questions No Thanks, No, No.
+Name the device the default
+Continue to install forced apps. They will be disabled later
+Accept necessary cookies
+Not now for remote setup
+From home screen go to Settings, Device Preferences, About
+Note the IP from the Status page, go back to the About menu
+Select the Android TV OS build seven times, go back to the Device Preferences
+Go to Developer Options, enable USB Debugging
+
+Next steps are from the PC
+
+adb connect <IP ADDRESS FROM ABOVE>
+This will fail. Allow it using the remote and the connection will be successful without any more messages in the command prompt
+.\install.bat
+Batch file will install some apps, then pause. After the pause it will reboot the Android TV device
+If a Google service updates during the install, you need to stop the install and rerun it, as the current install will stop
+
+Back on the Android TV device
+
+After the device has rebooted it will prompt you to Allow the USB debugging again
+It will ask for a primary account. Remove all accounts. You are really sure
+
+PC:
+
+Run cleanup.bat
+
+ATV:
+
+Dismiss the ad which has likely appeared
+Add the Live Transcript and tvQuickActions apps to the launcher
+Select the Live Transcript app
+Allow audio recording while using the app
+
+PC:
+
+configure.bat or scrcpy -m480
+Settings gear in the lower left
+Set the text size to maximum
+More settings
+Microphone, confirm that the CAD device shows in the list. You may need to allow local device enumeration. If it does not, move to another USB port to confirm it works in one of the ports
+Leave the setting on auto, back to More Settings
+Primary Language, download any languages that you may need
+Exit the settings back to transcription
+Confirm transcription by saying something
+
+ATV:
+
+Home button on the remote
+Settings, Network and Internet
+Disable Wi-Fi
+Back to Device Preferences, Developer Options
+Disable USB Debugging, disable Developer Options
+Press Home twice
+Launch tvQuickActions
+Continue until you allow show overlay, allow the app
+Not now on Disable Battery Optimization
+Agree to start Accessibility Service, Device Preferences, Accessibility, turn on tvQuickActions service
+Back into tvQuickActions, Buttons, Add Button
+Press Prime Video button (should be 5116)
+Set Button UP to Live Transcript app
+Set Button DOWN to Action, Power Dialog
+Press Prime Video button, down, Restart to confirm that app is working properly
+After Restart, press Prime Video button, up, select to launch Live Transcript
+Confirm transcription works, says it is offline
+Press Prime Video button, down, Power Off to shut down device
