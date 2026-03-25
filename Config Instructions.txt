@@ -77,7 +77,7 @@ Continue until you allow show overlay, allow the app
 Not now on Disable Battery Optimization
 Agree to start Accessibility Service, Device Preferences, Accessibility, turn on tvQuickActions service
 Back into tvQuickActions, Buttons, Add Button
-Press Prime Video button (should be 5116)
+Press Prime Video button (should be NES_SHORTCUT_02)
 Set Button UP to Live Transcript app
 Set Button DOWN to Action, Power Dialog
 Press Prime Video button, down, Restart to confirm that app is working properly
